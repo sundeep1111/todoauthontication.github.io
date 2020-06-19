@@ -5,6 +5,7 @@ var todoInputWrapper = document.getElementById("todo-input-wrapper");
 var btnLogin = document.getElementById("btn-login");
 var loginStatus = window.localStorage.getItem('login');
 var logout = document.getElementById('logout');
+var signup_login = document.getElementById('signup_login')
 
 logout.addEventListener('click', function () {
   localStorage.setItem('loginStatus', false);
@@ -50,6 +51,7 @@ function getTODOsFromBackend(){
         todoInputWrapper.style.display = "none";
       } else {
         btnLogin.style.display = "none";
+        signup_login.style.display = "none";
       }
 }
 

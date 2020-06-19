@@ -72,26 +72,35 @@ tsParticles.load("tsparticles", {
   });
 
   var loginForm = document.getElementById("login-form");
+  var username = document.getElementById('username');
+  var password = document.getElementById('password');
+  var usernotext = document.getElementById('usernotext')
 
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
-
-  console.log("Username -> ", e.target.username.value);
-  console.log("Password -> ", e.target.password.value);
-
-  var data = {
-    username: e.target.username.value,
-    password: e.target.password.value,
-  };
-
+ if(username.value == "" || password.value == ""){
+    userefill.classList.remove('hidden');
+            passfill.classList.remove('hidden');
+ }
   var http = new XMLHttpRequest();
-  http.open("POST", "https://5ee248c68b27f30016094891.mockapi.io/user", true);
+  http.open("GET", "https://5ee248c68b27f30016094891.mockapi.io/signupdetails", true);
   http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  http.send(JSON.stringify(data));
+  http.send();
   http.onreadystatechange = function () {
     if (http.readyState === 4) {
-      localStorage.setItem("loginStatus", true);
-       window.location.assign("./index.html");
+        let response = JSON.parse(this.responseText);
+        //console.log(response)
+        for(i=0; i<response.length; i++){
+            if(response[i].username !== username.value || response[i].password !== password.value){
+                alert('k')
+                usernotext.classList.remove('hidden')
+                break;
+            }else{
+                usernotext.classList.add('hidden')
+                localStorage.setItem("loginStatus", true);
+                window.location.assign("./index.html");
+            }
+        }
     }
   };
 });

@@ -8,19 +8,19 @@ body {
 }
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: #fff;
+  color: #000;
 }
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #fff;
+  color: #000;
 }
 :-ms-input-placeholder {
   /* IE 10+ */
-  color: #fff;
+  color: #000;
 }
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #fff;
+  color: #000;
 }
 #todowrap {
   margin: auto;
